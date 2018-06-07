@@ -20,6 +20,7 @@ for hp in manual_phenotype_to_gene:
         for row in hp_file_lines:
             genes.append(row[0].split(' ')[0])
         del genes[0:2]
+        del genes[-1]  # del 'Total'
         phenotypes[hp.replace('_', ':')] = genes
 
 for line in phenotype_to_genes:
@@ -62,5 +63,5 @@ for key in parents:
 write_object(parents, 'hp_db')
 
 
-# TODO check whether parents' genes include all children's ones. NO! hp_p = 'HP:0000005', hp_c = 'HP:0010985' {'GPR101', 'AMMECR1'}
+# parents' genes don't include all children's ones eg. hp_p = 'HP:0000005', hp_c = 'HP:0010985' {'GPR101', 'AMMECR1'}
 # TODO sprawdzić czy zwracanie przez referencje nie powoduje gdzieś problemów
